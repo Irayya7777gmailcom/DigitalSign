@@ -3,7 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signature Pad</title>
+    <title>Terms and Conditions Modal</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+    </style>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -28,12 +37,8 @@
             display: block;
             margin-bottom: 5px;
         }
-        .form-group input {
-            width: 100%;
-            padding: 8px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+        .form-group input[type="text"], .form-group input[type="checkbox"] {
+            margin-top: 8px;
         }
         #signature-pad {
             border: 2px solid #000;
@@ -59,6 +64,47 @@
             background-color: #f44336;
             color: white;
         }
+        #terms-link {
+            color: blue;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        /* Modal styles */
+        /* #terms-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        } */
+        /* .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 500px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: left;
+        }
+        .modal-header {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .modal-footer {
+            text-align: right;
+            margin-top: 20px;
+        }
+        .modal-footer button {
+            padding: 8px 16px;
+            font-size: 14px;
+        } */
     </style>
 </head>
 <body>
@@ -78,8 +124,12 @@
 
             <div class="form-group">
                 <label>
-                    <input type="checkbox" id="terms" required>
+                    <!-- <input type="checkbox" id="terms" required>
                     I agree to the terms and conditions
+                    I agree to the <span id="terms-link">terms and conditions</span> -->
+
+                    <input type="checkbox" id="terms" name="terms">
+            <label for="terms">I agree to the <a href="#" id="open-modal">Terms and Conditions</a></label>
                 </label>
             </div>
 
@@ -94,88 +144,165 @@
             </div>
         </form>
     </div>
+    <!-- <h1>Form with Terms and Conditions</h1>
+    <form>
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+            <label for="contact">Contact Number:</label>
+            <input type="tel" id="contact" name="contact" required>
+        </div>
+        <div>
+            <input type="checkbox" id="terms" name="terms">
+            <label for="terms">I agree to the <a href="#" id="open-modal">Terms and Conditions</a></label>
+        </div>
+        <button type="submit">Submit</button>
+    </form> -->
+
+    <!-- Modal -->
+    <div class="modal" id="terms-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Terms and Conditions</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ol>
+                        <li>All users must provide accurate personal information.</li>
+                        <li>Usage of the platform is restricted to lawful activities only.</li>
+                        <li>The company reserves the right to modify these terms at any time.</li>
+                        <li>Users are responsible for maintaining the confidentiality of their accounts.</li>
+                        <li>Any unauthorized access or activity will lead to account suspension.</li>
+                        <li>The platform does not guarantee uninterrupted or error-free services.</li>
+                        <li>Content shared by users must not infringe on the rights of others.</li>
+                        <li>Users agree not to distribute malicious software via the platform.</li>
+                        <li>Payments made are non-refundable, except under specific conditions.</li>
+                        <li>Intellectual property displayed on the platform remains the property of the company.</li>
+                        <li>By signing up, users consent to receive occasional promotional emails.</li>
+                        <li>The platform may track user activity for service improvement.</li>
+                        <li>Data privacy will be maintained as per applicable regulations.</li>
+                        <li>Disputes arising will be resolved under the company's jurisdiction.</li>
+                        <li>Users may not use the platform to distribute spam.</li>
+                        <li>Any violation of these terms may lead to account termination.</li>
+                        <li>The company is not liable for third-party content shared on the platform.</li>
+                        <li>Use of automated tools to scrape data is strictly prohibited.</li>
+                        <li>The platform reserves the right to restrict or deny access to certain users.</li>
+                        <li>Advertisements displayed may not reflect company endorsements.</li>
+                        <li>Feedback shared with the company may be used for product improvements.</li>
+                        <li>Users must promptly report security vulnerabilities to the company.</li>
+                        <li>Misuse of the platform's services can lead to legal action.</li>
+                        <li>The platform reserves the right to amend or discontinue any feature without notice.</li>
+                        <li>Continued use of the platform implies acceptance of updated terms.</li>
+                    </ol>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS & Dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
-        const canvas = document.getElementById('signature-pad');
-        const ctx = canvas.getContext('2d');
-        const clearButton = document.getElementById('clear');
-        const saveButton = document.getElementById('save');
-
-        // Set the canvas size
-        canvas.width = window.innerWidth * 0.9;
-        canvas.height = 200;
-
-        let isDrawing = false;
-
-        // Function to get the mouse position relative to the canvas
-        const getMousePosition = (e) => {
-            const rect = canvas.getBoundingClientRect();
-            const x = (e.clientX || e.touches[0].clientX) - rect.left;
-            const y = (e.clientY || e.touches[0].clientY) - rect.top;
-            return { x, y };
-        };
-
-        // Drawing functions
-        const startDrawing = (e) => {
-            isDrawing = true;
-            const { x, y } = getMousePosition(e);
-            ctx.beginPath();
-            ctx.moveTo(x, y);
-        };
-
-        const draw = (e) => {
-            if (!isDrawing) return;
-            e.preventDefault(); // Prevent scrolling on touch devices
-            const { x, y } = getMousePosition(e);
-            ctx.lineTo(x, y);
-            ctx.strokeStyle = '#000'; // Signature color: black
-            ctx.lineWidth = 2;
-            ctx.stroke();
-        };
-
-        const stopDrawing = () => {
-            isDrawing = false;
-            ctx.closePath();
-        };
-
-        // Mouse events for desktop
-        canvas.addEventListener('mousedown', startDrawing);
-        canvas.addEventListener('mousemove', draw);
-        canvas.addEventListener('mouseup', stopDrawing);
-        canvas.addEventListener('mouseout', stopDrawing);
-
-        // Touch events for mobile
-        canvas.addEventListener('touchstart', (e) => startDrawing(e));
-        canvas.addEventListener('touchmove', (e) => draw(e));
-        canvas.addEventListener('touchend', stopDrawing);
-        canvas.addEventListener('touchcancel', stopDrawing);
-
-        // Clear the signature area
-        clearButton.addEventListener('click', () => ctx.clearRect(0, 0, canvas.width, canvas.height));
-
-        // Save the signature as an image
-        saveButton.addEventListener('click', () => {
-            // Create a temporary canvas to apply a white background
-            const tempCanvas = document.createElement('canvas');
-            const tempCtx = tempCanvas.getContext('2d');
-            tempCanvas.width = canvas.width;
-            tempCanvas.height = canvas.height;
-
-            // Fill the background with white
-            tempCtx.fillStyle = '#fff'; // Background color: white
-            tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
-
-            // Draw the original canvas content onto the temporary canvas
-            tempCtx.drawImage(canvas, 0, 0);
-
-            // Save the image from the temporary canvas
-            const dataURL = tempCanvas.toDataURL('image/png');
-            const link = document.createElement('a');
-            link.href = dataURL;
-            link.download = 'signature.png'; // File name for the downloaded image
-            link.click();
+        const modal = new bootstrap.Modal(document.getElementById('terms-modal'));
+        const openModal = document.getElementById("open-modal");
+        
+        openModal.addEventListener("click", (e) => {
+            e.preventDefault();
+            modal.show();
         });
     </script>
 
+
+<script>
+    const canvas = document.getElementById('signature-pad');
+    const ctx = canvas.getContext('2d');
+    const clearButton = document.getElementById('clear');
+    const saveButton = document.getElementById('save');
+
+    // Set the canvas size
+    canvas.width = canvas.offsetWidth; // Match the rectangle's CSS width
+    canvas.height = 200;
+
+    let isDrawing = false;
+
+    // Function to get the cursor's position relative to the canvas
+    const getMousePosition = (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const x = (e.clientX || e.touches[0].clientX) - rect.left;
+        const y = (e.clientY || e.touches[0].clientY) - rect.top;
+        return { x, y };
+    };
+
+    // Drawing functions
+    const startDrawing = (e) => {
+        isDrawing = true;
+        const { x, y } = getMousePosition(e);
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+    };
+
+    const draw = (e) => {
+        if (!isDrawing) return;
+        e.preventDefault(); // Prevent scrolling on touch devices
+        const { x, y } = getMousePosition(e);
+        ctx.lineTo(x, y);
+        ctx.strokeStyle = '#000'; // Signature color: black
+        ctx.lineWidth = 2;
+        ctx.stroke();
+    };
+
+    const stopDrawing = () => {
+        isDrawing = false;
+        ctx.closePath();
+    };
+
+    // Mouse events for desktop
+    canvas.addEventListener('mousedown', startDrawing);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', stopDrawing);
+    canvas.addEventListener('mouseout', stopDrawing);
+
+    // Touch events for mobile
+    canvas.addEventListener('touchstart', (e) => startDrawing(e));
+    canvas.addEventListener('touchmove', (e) => draw(e));
+    canvas.addEventListener('touchend', stopDrawing);
+    canvas.addEventListener('touchcancel', stopDrawing);
+
+    // Clear the signature area
+    clearButton.addEventListener('click', () => ctx.clearRect(0, 0, canvas.width, canvas.height));
+
+    // Save the signature as an image
+    saveButton.addEventListener('click', () => {
+        // Create a temporary canvas to apply a white background
+        const tempCanvas = document.createElement('canvas');
+        const tempCtx = tempCanvas.getContext('2d');
+        tempCanvas.width = canvas.width;
+        tempCanvas.height = canvas.height;
+
+        // Fill the background with white
+        tempCtx.fillStyle = '#fff'; // Background color: white
+        tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+
+        // Draw the original canvas content onto the temporary canvas
+        tempCtx.drawImage(canvas, 0, 0);
+
+        // Save the image from the temporary canvas
+        const dataURL = tempCanvas.toDataURL('image/png');
+        const link = document.createElement('a');
+        link.href = dataURL;
+        link.download = 'signature.png'; // File name for the downloaded image
+        link.click();
+    });
+</script>
 </body>
 </html>
